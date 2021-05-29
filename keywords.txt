@@ -59,7 +59,6 @@ getSocket	KEYWORD2
 WiFiClient	KEYWORD2
 WiFiServer	KEYWORD2
 WiFiSSLClient	KEYWORD2
-setTwitterKeys	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
