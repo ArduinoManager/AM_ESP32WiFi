@@ -49,29 +49,29 @@
 #include "utility/Alarm.h"
 #include "EEPROM.h"
 
-#define MAX_ALARMS  					5			// Maximum number of Alarms Widgets
+#define MAX_ALARMS  			5		// Maximum number of Alarms Widgets
 #define ALARM_CHECK_INTERVAL	60		// [s]
 
 #endif
 
-#define VARIABLELEN 		14
-#define VALUELEN 				14
+#define VARIABLELEN 		    14
+#define VALUELEN 			    14
 
 
 class AMController {
 
   private:
-    char						_variable[VARIABLELEN + 1];
-    char 	   				_value[VALUELEN + 1];
-    bool	   				_var;
+    char				_variable[VARIABLELEN + 1];
+    char 	   			_value[VALUELEN + 1];
+    bool	   			_var;
     int       			_idx;
     WiFiServer			*_server;
     WiFiClient			*_pClient;
-    bool						_initialized;
+    bool				_initialized;
 
 #ifdef ALARMS_SUPPORT
 
-    unsigned long   _lastAlarmCheck;
+    unsigned long       _lastAlarmCheck;
     unsigned long		_startTime;
 
     void syncTime();
@@ -175,6 +175,8 @@ class AMController {
     void logLn(unsigned long msg);
 
     void temporaryDigitalWrite(uint8_t pin, uint8_t value, unsigned long ms);
+    float to_voltage(float adc_value, float vref, uint8_t resolution = 12);
+    uint16_t avgAnalogRead(uint8_t pin, uint8_t samples);
 
 #ifdef ALARMS_SUPPORT
     unsigned long now();
